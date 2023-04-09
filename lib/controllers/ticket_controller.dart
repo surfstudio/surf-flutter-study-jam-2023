@@ -20,6 +20,14 @@ class TicketController {
 
   List<Ticket> _tickets = [];
 
+  Future<void> downloadAllTicket(
+      BuildContext context, List<Ticket>? tickets, Function() callback) async {
+    for (var ticket in tickets!) {
+      this.downloadTicket(context, ticket, () => callback);
+    }
+    callback();
+  }
+
   Future<void> downloadTicket(
       BuildContext context, Ticket ticket, Function() callback) async {
     ticket.isLoading = true;

@@ -77,12 +77,25 @@ class _TicketListViewState extends State<TicketListView> {
                 },
               ),
             ),
-            floatingActionButton: ElevatedButton(
-              onPressed: () {
-                widget.ticketController.handleAddTicketButtonPressed(context);
-              },
-              child: Text('Добавить'),
-            ),
+            floatingActionButton:
+                Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              ElevatedButton(
+                onPressed: () {
+                  widget.ticketController.handleAddTicketButtonPressed(context);
+                },
+                child: Text('Добавить'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  widget.ticketController
+                      .downloadAllTicket(context, snapshot.data, () {
+                    // Обновляем View после pагрузки элемента
+                    setState(() {});
+                  });
+                },
+                child: Text('Загрузить все'),
+              )
+            ]),
           );
         } else {
           return Scaffold(
