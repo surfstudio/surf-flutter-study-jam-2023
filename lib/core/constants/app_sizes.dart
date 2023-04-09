@@ -32,4 +32,10 @@ abstract class AppSizes {
     vertical: AppSizes.p24,
     horizontal: AppSizes.p16,
   );
+
+  static const edgeOnlyT8L16R16 = EdgeInsets.only(
+    top: AppSizes.p8,
+    left: AppSizes.p16,
+    right: AppSizes.p16,
+  );
 }
