@@ -13,7 +13,7 @@ enum TicketLoadingStates {
   loaded;
 
   /// Иконка кнопки загрузки билета.
-  IconData getIcon() {
+  IconData get iconData {
     switch (this) {
       case TicketLoadingStates.waiting:
         return Icons.cloud_download_outlined;

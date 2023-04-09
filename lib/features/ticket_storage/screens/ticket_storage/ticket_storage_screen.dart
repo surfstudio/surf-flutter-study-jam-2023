@@ -2,18 +2,17 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_wm.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/widgets/no_data_state_widget.dart';
-
-// TODO(zemcov): покрой тестами.
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/widgets/ticket_tile.dart';
 
 /// Экран “Хранения билетов”.
-class TicketStorageScreen extends ElementaryWidget<TicketStorageWM> {
+class TicketStorageScreen extends ElementaryWidget<ITicketStorageWM> {
   /// @nodoc
   const TicketStorageScreen({
     Key? key,
   }) : super(createWM, key: key);
 
   @override
-  Widget build(TicketStorageWM wm) {
+  Widget build(ITicketStorageWM wm) {
     return Scaffold(
       appBar: AppBar(title: Text(wm.title)),
       body: ValueListenableBuilder(
@@ -31,7 +30,14 @@ class TicketStorageScreen extends ElementaryWidget<TicketStorageWM> {
             itemBuilder: (_, i) {
               final ticket = ticketList.elementAt(i);
 
-              return Text(ticket.name);
+              return TicketTile(
+                label: ticket.name,
+                leadingIconData: ticket.ticketType.iconData,
+                trailingIconData: ticket.loadingState.iconData,
+                onTrailingPressed: () {
+                  throw UnimplementedError();
+                },
+              );
             },
           );
         },

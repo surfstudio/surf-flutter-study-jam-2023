@@ -58,3 +58,24 @@ class TicketStorageWM
     return style ?? const TextStyle();
   }
 }
+
+/// Интерфейс для [TicketStorageWM].
+abstract class ITicketStorageWM extends IWidgetModel {
+  /// Заголовок экрана.
+  String get title;
+
+  /// Сообщение при отсутствии данных на экране.
+  String get noDataMessage;
+
+  /// Стиль сообщения об ошибки взятый из темы.
+  TextStyle get noDataMessageStyle;
+
+  /// Лейбл кнопки "Добавить".
+  String get addButtonLabel;
+
+  /// Список добавленных билетов.
+  ValueListenable<Iterable<TicketEntity>> get ticketList;
+
+  /// Действие при нажатии на кнопку "добавить".
+  void onAddTicket();
+}
