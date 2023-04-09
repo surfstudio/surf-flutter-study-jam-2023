@@ -17,4 +17,8 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
     letterSpacing: -0.41,
   );
+
+  static const labelButton = TextStyle(
+    color: AppColors.grey,
+  );
 }

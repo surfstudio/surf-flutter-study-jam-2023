@@ -6,6 +6,7 @@ abstract class AppColors {
   static const scaffoldBackgroundColor = Color(0xFFfffbfe);
 
   static const black = Colors.black;
+  static const grey = Colors.grey;
   static const lavender = Color(0xFFeaddff);
   static const royalPurple = Color(0xFF6750a4);
 }
