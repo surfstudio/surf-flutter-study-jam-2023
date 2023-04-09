@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/entityes/ticket_entity.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_model.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_screen.dart';
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/widgets/add_ticket_dialog.dart';
 
 /// DI для [TicketStorageWM].
 TicketStorageWM createWM(
@@ -24,32 +25,50 @@ TicketStorageWM createWM(
 
 /// WM для [TicketStorageScreen].
 class TicketStorageWM
-    extends WidgetModel<TicketStorageScreen, TicketStorageModel> {
+    extends WidgetModel<TicketStorageScreen, TicketStorageModel>
+    implements ITicketStorageWM {
   final AppLocalizations _l10n;
   final ThemeData _themeData;
 
   /// Заголовок экрана.
+  @override
   String get title => _l10n.ticketStorageAppBarTitle;
 
   /// Сообщение при отсутствии данных на экране.
+  @override
   String get noDataMessage => _l10n.noDataMessage;
 
   /// Стиль сообщения об ошибки взятый из темы.
+  @override
   TextStyle get noDataMessageStyle =>
       _assertTextStyle(_themeData.textTheme.titleMedium);
 
   /// Лейбл кнопки "Добавить".
+  @override
   String get addButtonLabel => _l10n.addButton;
 
   /// Список добавленных билетов.
+  @override
   ValueListenable<Iterable<TicketEntity>> get ticketList => model.ticketList;
 
   /// @nodoc
   TicketStorageWM(super.model, this._l10n, this._themeData);
 
   /// Действие при нажатии на кнопку "добавить".
+  @override
   void onAddTicket() {
-    throw UnimplementedError();
+    showDialog<void>(context: context, builder: _bottomSheetBuilder);
+  }
+
+  Widget _bottomSheetBuilder(BuildContext _) {
+    return AddTicketDialog(
+      title: _l10n.addTicketDialog,
+      addButtonLabel: _l10n.addButton,
+      textFieldLabel: _l10n.inputUrlLabel,
+      onAddButtonPressed: () {
+        throw UnimplementedError();
+      },
+    );
   }
 
   TextStyle _assertTextStyle(TextStyle? style) {

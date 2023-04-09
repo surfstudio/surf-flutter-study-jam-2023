@@ -17,5 +17,7 @@
         "type": "double"
       }
     }
-  }
+  },
+  "addTicketDialog": "Добавление билета",
+  "inputUrlLabel": "Введите url"
 }
