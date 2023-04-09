@@ -1,6 +1,8 @@
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/entityes/ticket_entity.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_model.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_screen.dart';
 
@@ -38,6 +40,9 @@ class TicketStorageWM
 
   /// Лейбл кнопки "Добавить".
   String get addButtonLabel => _l10n.addButton;
+
+  /// Список добавленных билетов.
+  ValueListenable<Iterable<TicketEntity>> get ticketList => model.ticketList;
 
   /// @nodoc
   TicketStorageWM(super.model, this._l10n, this._themeData);

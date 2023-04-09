@@ -1,5 +1,21 @@
 {
   "ticketStorageAppBarTitle": "Хранение билетов",
   "noDataMessage": "Здесь пока ничего нет",
-  "addButton": "Добавить"
+  "addButton": "Добавить",
+  "trainTicketName": "Поезд",
+  "airplaneTicketName": "Самолёт",
+  "ticketLoadingDescriptionWaiting": "Ожидает начала загрузки",
+  "ticketLoadingDescriptionLoaded": "Ожидает начала загрузки",
+  "ticketLoadingDescriptionLoading": "Загружается",
+  "ticketLoadingDescriptionLoadingWithParams": "Загружается {currentSize} из {totalSize} мб",
+  "@ticketLoadingDescriptionLoadingWithParams": {
+    "placeholders": {
+      "currentSize": {
+        "type": "double"
+      },
+      "totalSize": {
+        "type": "double"
+      }
+    }
+  }
 }
