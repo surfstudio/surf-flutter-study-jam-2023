@@ -11,10 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.light,
       home: const TicketStoragePage(),
       supportedLocales: L10n.all,
       localizationsDelegates: const [
