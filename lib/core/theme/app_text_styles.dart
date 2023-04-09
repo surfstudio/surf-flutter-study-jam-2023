@@ -21,4 +21,13 @@ class AppTextStyle {
   static const labelButton = TextStyle(
     color: AppColors.grey,
   );
+
+  static const ticketTitle = TextStyle(
+    color: AppColors.royalPurple,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const ticketDesc = TextStyle(
+    color: AppColors.grey,
+  );
 }

@@ -14,6 +14,9 @@ abstract class AppSizes {
   static const p40 = 40.0;
   static const p50 = 50.0;
 
+  static const gapW16 = SizedBox(width: AppSizes.p16);
+
+  static const gapH4 = SizedBox(height: AppSizes.p4);
   static const gapH24 = SizedBox(height: AppSizes.p24);
   static const gapH40 = SizedBox(height: AppSizes.p40);
 
@@ -22,6 +25,8 @@ abstract class AppSizes {
   static const roundedRectangleBorder16 = RoundedRectangleBorder(
     borderRadius: borderRadius16,
   );
+
+  static const edgeAll16 = EdgeInsets.all(AppSizes.p16);
 
   static const edgeSymmetricV16H32 = EdgeInsets.symmetric(
     vertical: AppSizes.p16,

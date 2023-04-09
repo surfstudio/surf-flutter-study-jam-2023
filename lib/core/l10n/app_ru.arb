@@ -3,5 +3,8 @@
     "noAvailableData": "Здесь пока ничего нет",
     "add": "Добавить",
     "enterTheUrl": "Введите url",
-    "enterTheCorrectUrl": "Введите корректный url"
+    "enterTheCorrectUrl": "Введите корректный url",
+    "waitingForTheDownloadToStart": "Ожидает начала загрузки",
+    "fileUploaded": "Файл загружен",
+    "ticket": "Билет"
 }
