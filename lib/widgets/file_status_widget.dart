@@ -1,10 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FileStatusWidget extends StatefulWidget {
-  final String status;
+  final bool isLoading;
+  final bool isLoaded;
+  final int percentLoaded;
 
-  FileStatusWidget({required this.status});
+  FileStatusWidget(
+      {required this.isLoaded,
+      required this.isLoading,
+      required this.percentLoaded});
 
   @override
   _FileStatusWidgetState createState() => _FileStatusWidgetState();
@@ -20,17 +24,18 @@ class _FileStatusWidgetState extends State<FileStatusWidget> {
       children: [
         Row(
           children: [
-            // Text("1")
-            SizedBox(
-              width: 200,
-              child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: LinearProgressIndicator(
-                  minHeight: 5,
-                  // value: 0.4,
-                ),
-              ),
-            )
+            !widget.isLoaded
+                ? SizedBox(
+                    width: 200,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: LinearProgressIndicator(
+                        minHeight: 5,
+                        value: widget.percentLoaded / 100,
+                      ),
+                    ),
+                  )
+                : Container()
             // Expanded(
             //     child: Container(
             //   alignment: Alignment.centerLeft,
@@ -50,7 +55,11 @@ class _FileStatusWidgetState extends State<FileStatusWidget> {
           children: [
             Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: Text("Файл загружается"))
+                child: !widget.isLoaded
+                    ? (widget.isLoading)
+                        ? Text("Файл загружается")
+                        : Text("Нажмите, чтобы загрузить файл")
+                    : Text("Файл загружен"))
           ],
         ),
       ],

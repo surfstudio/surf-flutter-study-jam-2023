@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FileStatusTraillingWidget extends StatefulWidget {
-  final String status;
+  final bool isLoading;
+  final bool isLoaded;
 
-  FileStatusTraillingWidget({required this.status});
+  FileStatusTraillingWidget({required this.isLoading, required this.isLoaded});
 
   @override
   _FileStatusTraillingWidgetState createState() =>
@@ -17,9 +17,14 @@ class _FileStatusTraillingWidgetState extends State<FileStatusTraillingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // return Icon(Icons.subdirectory_arrow_right_rounded);
-    return Icon(Icons.cloud_done_outlined);
-    return Icon(Icons.pause_circle_outline);
-    // return Icon(Icons.cloud_download_outlined);
+    if (widget.isLoaded) {
+      return Icon(Icons.cloud_done_outlined);
+    } else {
+      if (widget.isLoading) {
+        return Icon(Icons.pause_circle_outline);
+      } else {
+        return Icon(Icons.cloud_download_outlined);
+      }
+    }
   }
 }

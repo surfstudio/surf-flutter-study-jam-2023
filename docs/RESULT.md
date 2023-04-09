@@ -1,6 +1,6 @@
 # Целевая платформа
 
-[здесь вставьте платформу/платформы под которые вы разрабатывали, это поможет нам при проверке заданий]
+Разработка и тестирование происходала на платформе IPhone 14 Pro Max
 
 # Результаты
 
@@ -9,3 +9,9 @@
 # Ссылки на демонстрацию работы/скриншоты
 
 [здесь оставьте ссылки на скринкаст/скриншоты, можно в Github-репозитории или в отдельном облаке]
+
+
+https://journal-free.ru/download/psikhologiia-i-ia-11-noiabr-2019.pdf
+https://journal-free.ru/download/dachnye-sekrety-11-noiabr-2019.pdf
+https://journal-free.ru/download/sezon-u-dachi-20-oktiabr-2019.pdf
+https://journal-free.ru/download/forbes-11-noiabr-2019-rossiia.pdf
