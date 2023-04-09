@@ -4,8 +4,9 @@ import 'package:surf_flutter_study_jam_2023/data/ticket.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/bloc/ticket_storage_bloc.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/widget/ticket/ticketItem.dart';
 
-class ListEmpty extends StatelessWidget {
-  const ListEmpty({Key? key}) : super(key: key);
+class ListFull extends StatelessWidget {
+
+  const ListFull({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class ListEmpty extends StatelessWidget {
         return ListView.builder(
           itemCount: (state.props.first as List<Ticket>).length,
           itemBuilder: (context, position) {
+
             return TicketItem((state.props.first as List<Ticket>)[position]);
           },
         );

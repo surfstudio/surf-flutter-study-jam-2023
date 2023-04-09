@@ -7,8 +7,7 @@ import 'package:surf_flutter_study_jam_2023/data/interactor/ticket_list_interact
 List<ChangeNotifierProvider<ChangeNotifier>> listMultiProviders =
     <ChangeNotifierProvider<TicketListInteractor>>[
       ChangeNotifierProvider(create: (context) {
-        return TicketListInteractor();
+        return TicketListInteractor()..createDir();
       },
-
   )
 ];

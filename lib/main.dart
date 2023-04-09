@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:provider/provider.dart';
 import 'package:surf_flutter_study_jam_2023/features/res/multi_bloc_providers.dart';
 import 'package:surf_flutter_study_jam_2023/features/res/multi_providers.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ticket_storage_page.dart';
 
 void main() {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(
