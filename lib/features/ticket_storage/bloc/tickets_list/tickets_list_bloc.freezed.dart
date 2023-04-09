@@ -24,6 +24,7 @@ mixin _$TicketsListEvent {
         addTicket,
     required TResult Function(List<String> keys) downloadTickets,
     required TResult Function(String key) pauseDownloadForTicket,
+    required TResult Function(Ticket ticket) deleteDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$TicketsListEvent {
         addTicket,
     TResult? Function(List<String> keys)? downloadTickets,
     TResult? Function(String key)? pauseDownloadForTicket,
+    TResult? Function(Ticket ticket)? deleteDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$TicketsListEvent {
         addTicket,
     TResult Function(List<String> keys)? downloadTickets,
     TResult Function(String key)? pauseDownloadForTicket,
+    TResult Function(Ticket ticket)? deleteDocument,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +57,7 @@ mixin _$TicketsListEvent {
     required TResult Function(DownloadTicketsEvent value) downloadTickets,
     required TResult Function(PauseDownloadForTicketEvent value)
         pauseDownloadForTicket,
+    required TResult Function(DeleteDocumentEvent value) deleteDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +67,7 @@ mixin _$TicketsListEvent {
     TResult? Function(DownloadTicketsEvent value)? downloadTickets,
     TResult? Function(PauseDownloadForTicketEvent value)?
         pauseDownloadForTicket,
+    TResult? Function(DeleteDocumentEvent value)? deleteDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +76,7 @@ mixin _$TicketsListEvent {
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
     TResult Function(DownloadTicketsEvent value)? downloadTickets,
     TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    TResult Function(DeleteDocumentEvent value)? deleteDocument,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,6 +144,7 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
         addTicket,
     required TResult Function(List<String> keys) downloadTickets,
     required TResult Function(String key) pauseDownloadForTicket,
+    required TResult Function(Ticket ticket) deleteDocument,
   }) {
     return load();
   }
@@ -151,6 +158,7 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
         addTicket,
     TResult? Function(List<String> keys)? downloadTickets,
     TResult? Function(String key)? pauseDownloadForTicket,
+    TResult? Function(Ticket ticket)? deleteDocument,
   }) {
     return load?.call();
   }
@@ -164,6 +172,7 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
         addTicket,
     TResult Function(List<String> keys)? downloadTickets,
     TResult Function(String key)? pauseDownloadForTicket,
+    TResult Function(Ticket ticket)? deleteDocument,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -180,6 +189,7 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
     required TResult Function(DownloadTicketsEvent value) downloadTickets,
     required TResult Function(PauseDownloadForTicketEvent value)
         pauseDownloadForTicket,
+    required TResult Function(DeleteDocumentEvent value) deleteDocument,
   }) {
     return load(this);
   }
@@ -192,6 +202,7 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
     TResult? Function(DownloadTicketsEvent value)? downloadTickets,
     TResult? Function(PauseDownloadForTicketEvent value)?
         pauseDownloadForTicket,
+    TResult? Function(DeleteDocumentEvent value)? deleteDocument,
   }) {
     return load?.call(this);
   }
@@ -203,6 +214,7 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
     TResult Function(DownloadTicketsEvent value)? downloadTickets,
     TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    TResult Function(DeleteDocumentEvent value)? deleteDocument,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -311,6 +323,7 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
         addTicket,
     required TResult Function(List<String> keys) downloadTickets,
     required TResult Function(String key) pauseDownloadForTicket,
+    required TResult Function(Ticket ticket) deleteDocument,
   }) {
     return addTicket(url, onSuccess, onError);
   }
@@ -324,6 +337,7 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
         addTicket,
     TResult? Function(List<String> keys)? downloadTickets,
     TResult? Function(String key)? pauseDownloadForTicket,
+    TResult? Function(Ticket ticket)? deleteDocument,
   }) {
     return addTicket?.call(url, onSuccess, onError);
   }
@@ -337,6 +351,7 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
         addTicket,
     TResult Function(List<String> keys)? downloadTickets,
     TResult Function(String key)? pauseDownloadForTicket,
+    TResult Function(Ticket ticket)? deleteDocument,
     required TResult orElse(),
   }) {
     if (addTicket != null) {
@@ -353,6 +368,7 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
     required TResult Function(DownloadTicketsEvent value) downloadTickets,
     required TResult Function(PauseDownloadForTicketEvent value)
         pauseDownloadForTicket,
+    required TResult Function(DeleteDocumentEvent value) deleteDocument,
   }) {
     return addTicket(this);
   }
@@ -365,6 +381,7 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
     TResult? Function(DownloadTicketsEvent value)? downloadTickets,
     TResult? Function(PauseDownloadForTicketEvent value)?
         pauseDownloadForTicket,
+    TResult? Function(DeleteDocumentEvent value)? deleteDocument,
   }) {
     return addTicket?.call(this);
   }
@@ -376,6 +393,7 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
     TResult Function(DownloadTicketsEvent value)? downloadTickets,
     TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    TResult Function(DeleteDocumentEvent value)? deleteDocument,
     required TResult orElse(),
   }) {
     if (addTicket != null) {
@@ -480,6 +498,7 @@ class _$DownloadTicketsEvent extends DownloadTicketsEvent {
         addTicket,
     required TResult Function(List<String> keys) downloadTickets,
     required TResult Function(String key) pauseDownloadForTicket,
+    required TResult Function(Ticket ticket) deleteDocument,
   }) {
     return downloadTickets(keys);
   }
@@ -493,6 +512,7 @@ class _$DownloadTicketsEvent extends DownloadTicketsEvent {
         addTicket,
     TResult? Function(List<String> keys)? downloadTickets,
     TResult? Function(String key)? pauseDownloadForTicket,
+    TResult? Function(Ticket ticket)? deleteDocument,
   }) {
     return downloadTickets?.call(keys);
   }
@@ -506,6 +526,7 @@ class _$DownloadTicketsEvent extends DownloadTicketsEvent {
         addTicket,
     TResult Function(List<String> keys)? downloadTickets,
     TResult Function(String key)? pauseDownloadForTicket,
+    TResult Function(Ticket ticket)? deleteDocument,
     required TResult orElse(),
   }) {
     if (downloadTickets != null) {
@@ -522,6 +543,7 @@ class _$DownloadTicketsEvent extends DownloadTicketsEvent {
     required TResult Function(DownloadTicketsEvent value) downloadTickets,
     required TResult Function(PauseDownloadForTicketEvent value)
         pauseDownloadForTicket,
+    required TResult Function(DeleteDocumentEvent value) deleteDocument,
   }) {
     return downloadTickets(this);
   }
@@ -534,6 +556,7 @@ class _$DownloadTicketsEvent extends DownloadTicketsEvent {
     TResult? Function(DownloadTicketsEvent value)? downloadTickets,
     TResult? Function(PauseDownloadForTicketEvent value)?
         pauseDownloadForTicket,
+    TResult? Function(DeleteDocumentEvent value)? deleteDocument,
   }) {
     return downloadTickets?.call(this);
   }
@@ -545,6 +568,7 @@ class _$DownloadTicketsEvent extends DownloadTicketsEvent {
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
     TResult Function(DownloadTicketsEvent value)? downloadTickets,
     TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    TResult Function(DeleteDocumentEvent value)? deleteDocument,
     required TResult orElse(),
   }) {
     if (downloadTickets != null) {
@@ -638,6 +662,7 @@ class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
         addTicket,
     required TResult Function(List<String> keys) downloadTickets,
     required TResult Function(String key) pauseDownloadForTicket,
+    required TResult Function(Ticket ticket) deleteDocument,
   }) {
     return pauseDownloadForTicket(key);
   }
@@ -651,6 +676,7 @@ class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
         addTicket,
     TResult? Function(List<String> keys)? downloadTickets,
     TResult? Function(String key)? pauseDownloadForTicket,
+    TResult? Function(Ticket ticket)? deleteDocument,
   }) {
     return pauseDownloadForTicket?.call(key);
   }
@@ -664,6 +690,7 @@ class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
         addTicket,
     TResult Function(List<String> keys)? downloadTickets,
     TResult Function(String key)? pauseDownloadForTicket,
+    TResult Function(Ticket ticket)? deleteDocument,
     required TResult orElse(),
   }) {
     if (pauseDownloadForTicket != null) {
@@ -680,6 +707,7 @@ class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
     required TResult Function(DownloadTicketsEvent value) downloadTickets,
     required TResult Function(PauseDownloadForTicketEvent value)
         pauseDownloadForTicket,
+    required TResult Function(DeleteDocumentEvent value) deleteDocument,
   }) {
     return pauseDownloadForTicket(this);
   }
@@ -692,6 +720,7 @@ class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
     TResult? Function(DownloadTicketsEvent value)? downloadTickets,
     TResult? Function(PauseDownloadForTicketEvent value)?
         pauseDownloadForTicket,
+    TResult? Function(DeleteDocumentEvent value)? deleteDocument,
   }) {
     return pauseDownloadForTicket?.call(this);
   }
@@ -703,6 +732,7 @@ class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
     TResult Function(DownloadTicketsEvent value)? downloadTickets,
     TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    TResult Function(DeleteDocumentEvent value)? deleteDocument,
     required TResult orElse(),
   }) {
     if (pauseDownloadForTicket != null) {
@@ -721,6 +751,168 @@ abstract class PauseDownloadForTicketEvent extends TicketsListEvent {
   @JsonKey(ignore: true)
   _$$PauseDownloadForTicketEventCopyWith<_$PauseDownloadForTicketEvent>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteDocumentEventCopyWith<$Res> {
+  factory _$$DeleteDocumentEventCopyWith(_$DeleteDocumentEvent value,
+          $Res Function(_$DeleteDocumentEvent) then) =
+      __$$DeleteDocumentEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Ticket ticket});
+}
+
+/// @nodoc
+class __$$DeleteDocumentEventCopyWithImpl<$Res>
+    extends _$TicketsListEventCopyWithImpl<$Res, _$DeleteDocumentEvent>
+    implements _$$DeleteDocumentEventCopyWith<$Res> {
+  __$$DeleteDocumentEventCopyWithImpl(
+      _$DeleteDocumentEvent _value, $Res Function(_$DeleteDocumentEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ticket = null,
+  }) {
+    return _then(_$DeleteDocumentEvent(
+      ticket: null == ticket
+          ? _value.ticket
+          : ticket // ignore: cast_nullable_to_non_nullable
+              as Ticket,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteDocumentEvent extends DeleteDocumentEvent {
+  const _$DeleteDocumentEvent({required this.ticket}) : super._();
+
+  @override
+  final Ticket ticket;
+
+  @override
+  String toString() {
+    return 'TicketsListEvent.deleteDocument(ticket: $ticket)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteDocumentEvent &&
+            (identical(other.ticket, ticket) || other.ticket == ticket));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ticket);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteDocumentEventCopyWith<_$DeleteDocumentEvent> get copyWith =>
+      __$$DeleteDocumentEventCopyWithImpl<_$DeleteDocumentEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)
+        addTicket,
+    required TResult Function(List<String> keys) downloadTickets,
+    required TResult Function(String key) pauseDownloadForTicket,
+    required TResult Function(Ticket ticket) deleteDocument,
+  }) {
+    return deleteDocument(ticket);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult? Function(List<String> keys)? downloadTickets,
+    TResult? Function(String key)? pauseDownloadForTicket,
+    TResult? Function(Ticket ticket)? deleteDocument,
+  }) {
+    return deleteDocument?.call(ticket);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult Function(List<String> keys)? downloadTickets,
+    TResult Function(String key)? pauseDownloadForTicket,
+    TResult Function(Ticket ticket)? deleteDocument,
+    required TResult orElse(),
+  }) {
+    if (deleteDocument != null) {
+      return deleteDocument(ticket);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TicketsListLoadEvent value) load,
+    required TResult Function(TicketsListAddTicketEvent value) addTicket,
+    required TResult Function(DownloadTicketsEvent value) downloadTickets,
+    required TResult Function(PauseDownloadForTicketEvent value)
+        pauseDownloadForTicket,
+    required TResult Function(DeleteDocumentEvent value) deleteDocument,
+  }) {
+    return deleteDocument(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TicketsListLoadEvent value)? load,
+    TResult? Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult? Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult? Function(PauseDownloadForTicketEvent value)?
+        pauseDownloadForTicket,
+    TResult? Function(DeleteDocumentEvent value)? deleteDocument,
+  }) {
+    return deleteDocument?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TicketsListLoadEvent value)? load,
+    TResult Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    TResult Function(DeleteDocumentEvent value)? deleteDocument,
+    required TResult orElse(),
+  }) {
+    if (deleteDocument != null) {
+      return deleteDocument(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteDocumentEvent extends TicketsListEvent {
+  const factory DeleteDocumentEvent({required final Ticket ticket}) =
+      _$DeleteDocumentEvent;
+  const DeleteDocumentEvent._() : super._();
+
+  Ticket get ticket;
+  @JsonKey(ignore: true)
+  _$$DeleteDocumentEventCopyWith<_$DeleteDocumentEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

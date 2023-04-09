@@ -46,9 +46,55 @@ class TicketTile extends StatelessWidget {
           icon: const Icon(Icons.play_arrow),
         );
       case TicketState.loaded:
-        return IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.cloud_download),
+        return Row(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.cloud_download),
+            ),
+            IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Действительно хотите удалить файл "${ticket.name}"?',
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Отмена'),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<TicketsListBloc>(context).add(
+                                    TicketsListEvent.deleteDocument(
+                                      ticket: ticket,
+                                    ),
+                                  );
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Удалить'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.delete),
+            ),
+          ],
         );
     }
   }
@@ -115,7 +161,7 @@ class TicketTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(ticket.url.split('/').last),
+                  Text(ticket.name),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: _loadingIndicator(),

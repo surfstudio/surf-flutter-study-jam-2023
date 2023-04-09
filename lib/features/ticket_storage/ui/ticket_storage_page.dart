@@ -6,6 +6,7 @@ import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ui/widgets/t
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ui/widgets/url_bottom_sheet.dart';
 
 import '../bloc/tickets_list/tickets_list_bloc.dart';
+import '../enum/ticket_state.dart';
 
 class TicketStoragePage extends StatelessWidget {
   const TicketStoragePage({Key? key}) : super(key: key);
@@ -21,18 +22,44 @@ class TicketStoragePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            builder: (context) => const UrlBottomSheet(),
-          );
-        },
-        child: const Text(
-          'Добавить',
-          style: StyleThemes.commonDarkStyle,
-        ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) => const UrlBottomSheet(),
+              );
+            },
+            child: const Text(
+              'Добавить',
+              style: StyleThemes.commonDarkStyle,
+            ),
+          ),
+          const SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () {
+              BlocProvider.of<TicketsListBloc>(context).add(
+                TicketsListEvent.downloadTickets(
+                  keys: context
+                      .read<TicketsListBloc>()
+                      .tickets
+                      .where(
+                        (element) => element.state == TicketState.notLoaded,
+                      )
+                      .map((e) => e.key)
+                      .toList(),
+                ),
+              );
+            },
+            child: const Text(
+              'Загрузить все',
+              style: StyleThemes.commonDarkStyle,
+            ),
+          ),
+        ],
       ),
       body: Stack(
         children: [

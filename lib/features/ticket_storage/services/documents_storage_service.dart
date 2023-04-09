@@ -18,12 +18,23 @@ class DocumentsStorageService implements DocumentsStorageServiceAbstract {
 
   @override
   Future<bool> savePathToDocument({
-    required String key,
+    required String url,
     required String path,
   }) async {
     try {
       final box = await _documentsBox;
-      box.put(key, path);
+      box.put(url, path);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> deletePathToDocument({required String key}) async {
+    try {
+      final box = await _documentsBox;
+      box.delete(key);
       return true;
     } catch (_) {
       return false;

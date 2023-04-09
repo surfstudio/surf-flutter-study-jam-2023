@@ -15,4 +15,7 @@ class TicketsListEvent with _$TicketsListEvent {
   const factory TicketsListEvent.pauseDownloadForTicket({
     required String key,
   }) = PauseDownloadForTicketEvent;
+  const factory TicketsListEvent.deleteDocument({
+    required Ticket ticket,
+  }) = DeleteDocumentEvent;
 }

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/repositories/tickets_repository_abstract.dart';
@@ -48,7 +47,7 @@ class TicketsListBloc extends Bloc<TicketsListEvent, TicketsListState> {
           tickets.add(
             Ticket(
               key: const Uuid().v4(),
-              name: 'Ticket${tickets.length + 1}',
+              name: event.url.split('/').last,
               url: event.url,
               state: TicketState.notLoaded,
               timeAdded: DateTime.now(),
@@ -90,7 +89,7 @@ class TicketsListBloc extends Bloc<TicketsListEvent, TicketsListState> {
             );
             await ticketsRepository
                 .downloadDocument(
-              url: element.url,
+              ticket: element,
               cancelToken: getDownloadingController(element.key)?.cancelToken ??
                   CancelToken(),
               onReceiveProgress: (downloaded, total) {
@@ -145,6 +144,17 @@ class TicketsListBloc extends Bloc<TicketsListEvent, TicketsListState> {
             (c) => c.key == event.key,
           );
         },
+        deleteDocument: (event) async {
+          emit(const TicketsListState.loading());
+          await ticketsRepository.deleteTicket(ticket: event.ticket);
+          tickets.removeWhere(
+            (element) => element.key == event.ticket.key,
+          );
+          await ticketsRepository.saveTicketsList(
+            tickets: tickets,
+          );
+          add(const TicketsListEvent.load());
+        },
       );
     });
   }
@@ -158,11 +168,11 @@ class DownloadingController {
     required this.key,
   });
 
-  void startDownload() {}
-  // я без понятия как это сделать в рамках одного дня, я не сеньор))))0)
-  void pauseDownload() {
-    cancelToken.cancel();
-  }
+  // void startDownload() {}
+
+  // void pauseDownload() {
+  //   cancelToken.cancel();
+  // }
 
   void stopDownload() {
     cancelToken.cancel();

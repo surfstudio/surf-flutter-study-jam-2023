@@ -8,8 +8,12 @@ abstract class TicketsRepositoryAbstract {
   Future<List<Ticket>> loadTicketsList();
 
   Future<bool> downloadDocument({
-    required String url,
+    required Ticket ticket,
     void Function(int, int)? onReceiveProgress,
     required CancelToken cancelToken,
+  });
+
+  Future<bool> deleteTicket({
+    required Ticket ticket,
   });
 }

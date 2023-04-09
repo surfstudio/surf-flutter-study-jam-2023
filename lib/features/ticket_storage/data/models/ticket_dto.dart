@@ -13,11 +13,14 @@ class TicketDto {
   final TicketState state;
   @HiveField(3)
   final DateTime timeAdded;
+  @HiveField(4)
+  final String key;
 
   TicketDto({
     required this.name,
     required this.url,
     required this.state,
     required this.timeAdded,
+    required this.key,
   });
 }

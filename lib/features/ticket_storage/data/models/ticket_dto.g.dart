@@ -21,13 +21,14 @@ class TicketDtoAdapter extends TypeAdapter<TicketDto> {
       url: fields[1] as String,
       state: fields[2] as TicketState,
       timeAdded: fields[3] as DateTime,
+      key: fields[4] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, TicketDto obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class TicketDtoAdapter extends TypeAdapter<TicketDto> {
       ..writeByte(2)
       ..write(obj.state)
       ..writeByte(3)
-      ..write(obj.timeAdded);
+      ..write(obj.timeAdded)
+      ..writeByte(4)
+      ..write(obj.key);
   }
 
   @override

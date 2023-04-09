@@ -9,6 +9,8 @@ class TicketsStorageService implements TicketsStorageServiceAbstract {
   Future<Box<TicketDto>> get _ticketsBox async =>
       await Hive.openBox<TicketDto>(_ticketsBoxName);
 
+  String _boxKey(String url, String key) => url + key;
+
   @override
   Future<List<TicketDto>> loadTickets() async {
     try {
@@ -24,7 +26,22 @@ class TicketsStorageService implements TicketsStorageServiceAbstract {
     try {
       final box = await _ticketsBox;
       box.clear();
-      box.addAll(tickets);
+      for (var ticket in tickets) {
+        box.put(_boxKey(ticket.url, ticket.key), ticket);
+      }
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> deleteTicket({required String url, required String key}) async {
+    try {
+      final box = await _ticketsBox;
+      box.delete(_boxKey(url, key));
+      // final k = box.keys.toList();
+      // final key = _boxKey(url, key);
       return true;
     } catch (_) {
       return false;

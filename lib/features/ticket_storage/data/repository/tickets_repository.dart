@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
@@ -21,28 +20,28 @@ class TicketsRepository implements TicketsRepositoryAbstract {
     required this.downloadStorageService,
     required this.documentsStorageService,
   });
-  Future<String> _getPathToFile(String url) async {
+  Future<String> _getPathToFile(String name) async {
     final directory = (await getApplicationDocumentsDirectory()).path;
-    return directory + url.split('/').last;
+    return directory + name;
   }
 
   @override
   Future<bool> downloadDocument({
-    required String url,
+    required Ticket ticket,
     void Function(int, int)? onReceiveProgress,
     required CancelToken cancelToken,
   }) async {
     try {
       final result = await downloadStorageService.downloadPdf(
-        url: url,
+        url: ticket.url,
         onReceiveProgress: onReceiveProgress,
         cancelToken: cancelToken,
       );
       if (result.isNotEmpty) {
-        final filePath = await _getPathToFile(url);
+        final filePath = await _getPathToFile(ticket.name);
         await File(filePath).writeAsBytes(result);
         return await documentsStorageService.savePathToDocument(
-          key: url,
+          url: ticket.url,
           path: filePath,
         );
       }
@@ -59,7 +58,7 @@ class TicketsRepository implements TicketsRepositoryAbstract {
       return ticketsDto
           .map(
             (e) => Ticket(
-              key: const Uuid().v4(),
+              key: e.key,
               name: e.name,
               url: e.url,
               state: e.state,
@@ -79,14 +78,34 @@ class TicketsRepository implements TicketsRepositoryAbstract {
       final ticketsDto = tickets
           .map(
             (e) => TicketDto(
-              name: e.name,
-              url: e.url,
-              state: e.state,
-              timeAdded: e.timeAdded,
-            ),
+                name: e.name,
+                url: e.url,
+                state: e.state,
+                timeAdded: e.timeAdded,
+                key: e.key),
           )
           .toList();
       return await ticketsStorageService.saveTickets(tickets: ticketsDto);
+    } catch (_) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> deleteTicket({required Ticket ticket}) async {
+    try {
+      final path = await documentsStorageService.getPathToDocument(
+        key: ticket.url,
+      );
+      if (path?.isNotEmpty ?? false) {
+        final file = File(path!);
+        await file.delete();
+      }
+      return true;
+      // return await ticketsStorageService.deleteTicket(
+      //   url: ticket.url,
+      //   key: ticket.key,
+      // );
     } catch (_) {
       return false;
     }
