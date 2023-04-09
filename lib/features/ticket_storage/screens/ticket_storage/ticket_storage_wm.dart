@@ -2,6 +2,9 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/di/i_ticket_storage_scope.dart';
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/entityes/enums/ticket_type.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/entityes/ticket_entity.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_model.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/screens/ticket_storage/ticket_storage_screen.dart';
@@ -18,7 +21,8 @@ TicketStorageWM createWM(
   );
   final themeData = Theme.of(context);
 
-  final model = TicketStorageModel();
+  final ticketsScope = context.read<ITicketStorageScope>();
+  final model = TicketStorageModel(ticketsScope.ticketsBloc);
 
   return TicketStorageWM(model, appLocalization!, themeData);
 }
@@ -51,6 +55,9 @@ class TicketStorageWM
   @override
   ValueListenable<Iterable<TicketEntity>> get ticketList => model.ticketList;
 
+  @override
+  ValueListenable<bool> get isLoading => model.isDataLoading;
+
   /// @nodoc
   TicketStorageWM(super.model, this._l10n, this._themeData);
 
@@ -73,8 +80,8 @@ class TicketStorageWM
     return style ?? const TextStyle();
   }
 
-  void _onAddNewTicketLink(String link) {
-    model.addNewTicketLink(link);
+  void _onAddNewTicketLink(String link, TicketType type) {
+    model.addNewTicketLink(link, type);
   }
 }
 
@@ -94,6 +101,9 @@ abstract class ITicketStorageWM extends IWidgetModel {
 
   /// Список добавленных билетов.
   ValueListenable<Iterable<TicketEntity>> get ticketList;
+
+  /// Экран в состоянии загрузки.
+  ValueListenable<bool> get isLoading;
 
   /// Действие при нажатии на кнопку "добавить".
   void onAddTicket();

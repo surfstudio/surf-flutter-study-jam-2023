@@ -15,9 +15,16 @@ class TicketStorageScreen extends ElementaryWidget<ITicketStorageWM> {
   Widget build(ITicketStorageWM wm) {
     return Scaffold(
       appBar: AppBar(title: Text(wm.title)),
-      body: ValueListenableBuilder(
-        valueListenable: wm.ticketList,
-        builder: (_, ticketList, __) {
+      body: DoubleValueListenableBuilder(
+        firstValue: wm.ticketList,
+        secondValue: wm.isLoading,
+        builder: (_, ticketList, isLoading) {
+          if (isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
           if (ticketList.isEmpty) {
             return NoDataStateWidget(
               noDataMessage: wm.noDataMessage,

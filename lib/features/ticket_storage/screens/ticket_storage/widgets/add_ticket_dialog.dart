@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/entityes/enums/ticket_type.dart';
+
+/// Колбек для добавления нового билета.
+typedef AddTicketCallback = void Function(
+  String url,
+  TicketType type,
+);
 
 /// Диалог добавления билетов.
 class AddTicketDialog extends StatefulWidget {
   /// Нажатие кнопки добавления билета.
-  final ValueChanged<String> onAddButtonPressed;
+  final AddTicketCallback onAddButtonPressed;
 
   /// Локализованные строковые ресурсы проекта.
   final AppLocalizations l10n;
@@ -24,6 +31,7 @@ class _AddTicketDialogState extends State<AddTicketDialog> {
   final _formKey = GlobalKey<FormState>();
 
   String? url;
+  bool? isAirplane;
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +39,26 @@ class _AddTicketDialogState extends State<AddTicketDialog> {
       contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       title: Text(widget.l10n.addTicketDialogTitle),
       children: [
-        TextFormField(
+        Form(
           key: _formKey,
-          validator: _urlValidator,
-          onChanged: _onChangedUrl,
-          decoration: InputDecoration(
-            label: Text(widget.l10n.inputUrlLabel),
-            border: const OutlineInputBorder(),
+          child: TextFormField(
+            validator: _urlValidator,
+            autovalidateMode: AutovalidateMode.disabled,
+            onChanged: _onChangedUrl,
+            decoration: InputDecoration(
+              label: Text(widget.l10n.inputUrlLabel),
+              border: const OutlineInputBorder(),
+            ),
           ),
+        ),
+        const SizedBox(height: 16),
+        CheckboxListTile(
+          title: Text(widget.l10n.airplaneQuestion),
+          subtitle: Text(widget.l10n.airplaneDescription),
+          value: isAirplane ?? false,
+          onChanged: (value) {
+            isAirplane = value;
+          },
         ),
         const SizedBox(height: 16),
         FilledButton(
@@ -54,13 +74,20 @@ class _AddTicketDialogState extends State<AddTicketDialog> {
   }
 
   void _onAddUrlPressed() {
+    final formState = _formKey.currentState;
+    assert(formState != null,
+        'Убедитесь что присвоили _formKey параметру key в TextFormField.');
     final isValidUrl = _formKey.currentState?.validate() ?? false;
     if (isValidUrl && url != null) {
       assert(
         url != null,
         'Если валидация прошла успешно, url не может ровняться нулю. Проверьте объявление TextFormField выше.',
       );
-      widget.onAddButtonPressed(url!);
+      final type =
+          (isAirplane ?? false) ? TicketType.airplane : TicketType.train;
+
+      widget.onAddButtonPressed(url!, type);
+      Navigator.of(context).pop();
     }
   }
 

@@ -21,5 +21,8 @@
   "addTicketDialogTitle": "Добавление билета",
   "inputUrlLabel": "Введите url",
   "emptyUrlValidator": "Вы не ввели ссылку",
-  "incorrectUrlValidator": "Введите корректный URL"
+  "incorrectUrlValidator": "Введите корректный URL",
+  "airplaneQuestion": "Вы боитесь летать?",
+  "airplaneDescription": "Если да, то поедете на поезде"
+
 }

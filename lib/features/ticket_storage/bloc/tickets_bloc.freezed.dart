@@ -19,21 +19,21 @@ mixin _$TicketsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String ticketUrl) addTicketUrl,
+    required TResult Function(String url, TicketType type) addTicketUrl,
     required TResult Function(String ticketId) loadTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String ticketUrl)? addTicketUrl,
+    TResult? Function(String url, TicketType type)? addTicketUrl,
     TResult? Function(String ticketId)? loadTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String ticketUrl)? addTicketUrl,
+    TResult Function(String url, TicketType type)? addTicketUrl,
     TResult Function(String ticketId)? loadTicket,
     required TResult orElse(),
   }) =>
@@ -118,7 +118,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String ticketUrl) addTicketUrl,
+    required TResult Function(String url, TicketType type) addTicketUrl,
     required TResult Function(String ticketId) loadTicket,
   }) {
     return started();
@@ -128,7 +128,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String ticketUrl)? addTicketUrl,
+    TResult? Function(String url, TicketType type)? addTicketUrl,
     TResult? Function(String ticketId)? loadTicket,
   }) {
     return started?.call();
@@ -138,7 +138,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String ticketUrl)? addTicketUrl,
+    TResult Function(String url, TicketType type)? addTicketUrl,
     TResult Function(String ticketId)? loadTicket,
     required TResult orElse(),
   }) {
@@ -193,7 +193,7 @@ abstract class _$$_AddTicketUrlCopyWith<$Res> {
           _$_AddTicketUrl value, $Res Function(_$_AddTicketUrl) then) =
       __$$_AddTicketUrlCopyWithImpl<$Res>;
   @useResult
-  $Res call({String ticketUrl});
+  $Res call({String url, TicketType type});
 }
 
 /// @nodoc
@@ -207,13 +207,18 @@ class __$$_AddTicketUrlCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ticketUrl = null,
+    Object? url = null,
+    Object? type = null,
   }) {
     return _then(_$_AddTicketUrl(
-      null == ticketUrl
-          ? _value.ticketUrl
-          : ticketUrl // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TicketType,
     ));
   }
 }
@@ -221,14 +226,16 @@ class __$$_AddTicketUrlCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddTicketUrl implements _AddTicketUrl {
-  const _$_AddTicketUrl(this.ticketUrl);
+  const _$_AddTicketUrl({required this.url, required this.type});
 
   @override
-  final String ticketUrl;
+  final String url;
+  @override
+  final TicketType type;
 
   @override
   String toString() {
-    return 'TicketsEvent.addTicketUrl(ticketUrl: $ticketUrl)';
+    return 'TicketsEvent.addTicketUrl(url: $url, type: $type)';
   }
 
   @override
@@ -236,12 +243,12 @@ class _$_AddTicketUrl implements _AddTicketUrl {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AddTicketUrl &&
-            (identical(other.ticketUrl, ticketUrl) ||
-                other.ticketUrl == ticketUrl));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ticketUrl);
+  int get hashCode => Object.hash(runtimeType, url, type);
 
   @JsonKey(ignore: true)
   @override
@@ -253,32 +260,32 @@ class _$_AddTicketUrl implements _AddTicketUrl {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String ticketUrl) addTicketUrl,
+    required TResult Function(String url, TicketType type) addTicketUrl,
     required TResult Function(String ticketId) loadTicket,
   }) {
-    return addTicketUrl(ticketUrl);
+    return addTicketUrl(url, type);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String ticketUrl)? addTicketUrl,
+    TResult? Function(String url, TicketType type)? addTicketUrl,
     TResult? Function(String ticketId)? loadTicket,
   }) {
-    return addTicketUrl?.call(ticketUrl);
+    return addTicketUrl?.call(url, type);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String ticketUrl)? addTicketUrl,
+    TResult Function(String url, TicketType type)? addTicketUrl,
     TResult Function(String ticketId)? loadTicket,
     required TResult orElse(),
   }) {
     if (addTicketUrl != null) {
-      return addTicketUrl(ticketUrl);
+      return addTicketUrl(url, type);
     }
     return orElse();
   }
@@ -319,9 +326,12 @@ class _$_AddTicketUrl implements _AddTicketUrl {
 }
 
 abstract class _AddTicketUrl implements TicketsEvent {
-  const factory _AddTicketUrl(final String ticketUrl) = _$_AddTicketUrl;
+  const factory _AddTicketUrl(
+      {required final String url,
+      required final TicketType type}) = _$_AddTicketUrl;
 
-  String get ticketUrl;
+  String get url;
+  TicketType get type;
   @JsonKey(ignore: true)
   _$$_AddTicketUrlCopyWith<_$_AddTicketUrl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -393,7 +403,7 @@ class _$_LoadTicket implements _LoadTicket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String ticketUrl) addTicketUrl,
+    required TResult Function(String url, TicketType type) addTicketUrl,
     required TResult Function(String ticketId) loadTicket,
   }) {
     return loadTicket(ticketId);
@@ -403,7 +413,7 @@ class _$_LoadTicket implements _LoadTicket {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String ticketUrl)? addTicketUrl,
+    TResult? Function(String url, TicketType type)? addTicketUrl,
     TResult? Function(String ticketId)? loadTicket,
   }) {
     return loadTicket?.call(ticketId);
@@ -413,7 +423,7 @@ class _$_LoadTicket implements _LoadTicket {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String ticketUrl)? addTicketUrl,
+    TResult Function(String url, TicketType type)? addTicketUrl,
     TResult Function(String ticketId)? loadTicket,
     required TResult orElse(),
   }) {
@@ -472,38 +482,44 @@ mixin _$TicketsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Iterable<TicketEntity> ticketList) linksLoaded,
+    required TResult Function(Iterable<TicketEntity> ticketList) dataUpdated,
+    required TResult Function(Exception e) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Iterable<TicketEntity> ticketList)? linksLoaded,
+    TResult? Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult? Function(Exception e)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Iterable<TicketEntity> ticketList)? linksLoaded,
+    TResult Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult Function(Exception e)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LinksLoaded value) linksLoaded,
+    required TResult Function(_DataUpdated value) dataUpdated,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LinksLoaded value)? linksLoaded,
+    TResult? Function(_DataUpdated value)? dataUpdated,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LinksLoaded value)? linksLoaded,
+    TResult Function(_DataUpdated value)? dataUpdated,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -565,7 +581,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Iterable<TicketEntity> ticketList) linksLoaded,
+    required TResult Function(Iterable<TicketEntity> ticketList) dataUpdated,
+    required TResult Function(Exception e) error,
   }) {
     return initial();
   }
@@ -574,7 +591,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Iterable<TicketEntity> ticketList)? linksLoaded,
+    TResult? Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult? Function(Exception e)? error,
   }) {
     return initial?.call();
   }
@@ -583,7 +601,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Iterable<TicketEntity> ticketList)? linksLoaded,
+    TResult Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult Function(Exception e)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -596,7 +615,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LinksLoaded value) linksLoaded,
+    required TResult Function(_DataUpdated value) dataUpdated,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -605,7 +625,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LinksLoaded value)? linksLoaded,
+    TResult? Function(_DataUpdated value)? dataUpdated,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -614,7 +635,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LinksLoaded value)? linksLoaded,
+    TResult Function(_DataUpdated value)? dataUpdated,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -629,20 +651,20 @@ abstract class _Initial implements TicketsState {
 }
 
 /// @nodoc
-abstract class _$$_LinksLoadedCopyWith<$Res> {
-  factory _$$_LinksLoadedCopyWith(
-          _$_LinksLoaded value, $Res Function(_$_LinksLoaded) then) =
-      __$$_LinksLoadedCopyWithImpl<$Res>;
+abstract class _$$_DataUpdatedCopyWith<$Res> {
+  factory _$$_DataUpdatedCopyWith(
+          _$_DataUpdated value, $Res Function(_$_DataUpdated) then) =
+      __$$_DataUpdatedCopyWithImpl<$Res>;
   @useResult
   $Res call({Iterable<TicketEntity> ticketList});
 }
 
 /// @nodoc
-class __$$_LinksLoadedCopyWithImpl<$Res>
-    extends _$TicketsStateCopyWithImpl<$Res, _$_LinksLoaded>
-    implements _$$_LinksLoadedCopyWith<$Res> {
-  __$$_LinksLoadedCopyWithImpl(
-      _$_LinksLoaded _value, $Res Function(_$_LinksLoaded) _then)
+class __$$_DataUpdatedCopyWithImpl<$Res>
+    extends _$TicketsStateCopyWithImpl<$Res, _$_DataUpdated>
+    implements _$$_DataUpdatedCopyWith<$Res> {
+  __$$_DataUpdatedCopyWithImpl(
+      _$_DataUpdated _value, $Res Function(_$_DataUpdated) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -650,7 +672,7 @@ class __$$_LinksLoadedCopyWithImpl<$Res>
   $Res call({
     Object? ticketList = null,
   }) {
-    return _then(_$_LinksLoaded(
+    return _then(_$_DataUpdated(
       null == ticketList
           ? _value.ticketList
           : ticketList // ignore: cast_nullable_to_non_nullable
@@ -661,22 +683,22 @@ class __$$_LinksLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LinksLoaded implements _LinksLoaded {
-  const _$_LinksLoaded(this.ticketList);
+class _$_DataUpdated implements _DataUpdated {
+  const _$_DataUpdated(this.ticketList);
 
   @override
   final Iterable<TicketEntity> ticketList;
 
   @override
   String toString() {
-    return 'TicketsState.linksLoaded(ticketList: $ticketList)';
+    return 'TicketsState.dataUpdated(ticketList: $ticketList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LinksLoaded &&
+            other is _$_DataUpdated &&
             const DeepCollectionEquality()
                 .equals(other.ticketList, ticketList));
   }
@@ -688,36 +710,39 @@ class _$_LinksLoaded implements _LinksLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LinksLoadedCopyWith<_$_LinksLoaded> get copyWith =>
-      __$$_LinksLoadedCopyWithImpl<_$_LinksLoaded>(this, _$identity);
+  _$$_DataUpdatedCopyWith<_$_DataUpdated> get copyWith =>
+      __$$_DataUpdatedCopyWithImpl<_$_DataUpdated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Iterable<TicketEntity> ticketList) linksLoaded,
+    required TResult Function(Iterable<TicketEntity> ticketList) dataUpdated,
+    required TResult Function(Exception e) error,
   }) {
-    return linksLoaded(ticketList);
+    return dataUpdated(ticketList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Iterable<TicketEntity> ticketList)? linksLoaded,
+    TResult? Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult? Function(Exception e)? error,
   }) {
-    return linksLoaded?.call(ticketList);
+    return dataUpdated?.call(ticketList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Iterable<TicketEntity> ticketList)? linksLoaded,
+    TResult Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult Function(Exception e)? error,
     required TResult orElse(),
   }) {
-    if (linksLoaded != null) {
-      return linksLoaded(ticketList);
+    if (dataUpdated != null) {
+      return dataUpdated(ticketList);
     }
     return orElse();
   }
@@ -726,40 +751,180 @@ class _$_LinksLoaded implements _LinksLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LinksLoaded value) linksLoaded,
+    required TResult Function(_DataUpdated value) dataUpdated,
+    required TResult Function(_Error value) error,
   }) {
-    return linksLoaded(this);
+    return dataUpdated(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LinksLoaded value)? linksLoaded,
+    TResult? Function(_DataUpdated value)? dataUpdated,
+    TResult? Function(_Error value)? error,
   }) {
-    return linksLoaded?.call(this);
+    return dataUpdated?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LinksLoaded value)? linksLoaded,
+    TResult Function(_DataUpdated value)? dataUpdated,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (linksLoaded != null) {
-      return linksLoaded(this);
+    if (dataUpdated != null) {
+      return dataUpdated(this);
     }
     return orElse();
   }
 }
 
-abstract class _LinksLoaded implements TicketsState {
-  const factory _LinksLoaded(final Iterable<TicketEntity> ticketList) =
-      _$_LinksLoaded;
+abstract class _DataUpdated implements TicketsState {
+  const factory _DataUpdated(final Iterable<TicketEntity> ticketList) =
+      _$_DataUpdated;
 
   Iterable<TicketEntity> get ticketList;
   @JsonKey(ignore: true)
-  _$$_LinksLoadedCopyWith<_$_LinksLoaded> get copyWith =>
+  _$$_DataUpdatedCopyWith<_$_DataUpdated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Exception e});
+}
+
+/// @nodoc
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$TicketsStateCopyWithImpl<$Res, _$_Error>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = null,
+  }) {
+    return _then(_$_Error(
+      null == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as Exception,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Error implements _Error {
+  const _$_Error(this.e);
+
+  @override
+  final Exception e;
+
+  @override
+  String toString() {
+    return 'TicketsState.error(e: $e)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            (identical(other.e, e) || other.e == e));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, e);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Iterable<TicketEntity> ticketList) dataUpdated,
+    required TResult Function(Exception e) error,
+  }) {
+    return error(e);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult? Function(Exception e)? error,
+  }) {
+    return error?.call(e);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Iterable<TicketEntity> ticketList)? dataUpdated,
+    TResult Function(Exception e)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(e);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_DataUpdated value) dataUpdated,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_DataUpdated value)? dataUpdated,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_DataUpdated value)? dataUpdated,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements TicketsState {
+  const factory _Error(final Exception e) = _$_Error;
+
+  Exception get e;
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -7,15 +7,13 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-  bottom_sheet: ^3.1.2
-  collection: ^1.17.0
+  bloc: ^8.1.1
   dio: ^5.1.1
   elementary: ^2.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_svg: ^2.0.4
   freezed_annotation: ^2.2.0
   golden_toolkit: ^0.15.0
   intl: ^0.17.0

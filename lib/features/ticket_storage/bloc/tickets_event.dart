@@ -7,7 +7,10 @@ class TicketsEvent with _$TicketsEvent {
   const factory TicketsEvent.started() = _Started;
 
   /// Добавить билет.
-  const factory TicketsEvent.addTicketUrl(String ticketUrl) = _AddTicketUrl;
+  const factory TicketsEvent.addTicketUrl({
+    required String url,
+    required TicketType type,
+  }) = _AddTicketUrl;
 
   /// Загрузить билет.
   const factory TicketsEvent.loadTicket(String ticketId) = _LoadTicket;
