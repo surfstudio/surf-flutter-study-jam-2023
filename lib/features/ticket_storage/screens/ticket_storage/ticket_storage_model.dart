@@ -14,6 +14,9 @@ class TicketStorageModel extends ElementaryModel {
 
   /// @nodoc
   TicketStorageModel();
+
+  /// Добавление нового билета в список.
+  void addNewTicketLink(String link) {}
 }
 
 const _mockTickets = [

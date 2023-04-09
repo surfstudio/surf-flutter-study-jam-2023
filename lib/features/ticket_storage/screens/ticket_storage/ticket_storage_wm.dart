@@ -62,12 +62,8 @@ class TicketStorageWM
 
   Widget _bottomSheetBuilder(BuildContext _) {
     return AddTicketDialog(
-      title: _l10n.addTicketDialog,
-      addButtonLabel: _l10n.addButton,
-      textFieldLabel: _l10n.inputUrlLabel,
-      onAddButtonPressed: () {
-        throw UnimplementedError();
-      },
+      l10n: _l10n,
+      onAddButtonPressed: _onAddNewTicketLink,
     );
   }
 
@@ -75,6 +71,10 @@ class TicketStorageWM
     assert(style != null, 'Выбранный стиль не задан в теме приложения');
 
     return style ?? const TextStyle();
+  }
+
+  void _onAddNewTicketLink(String link) {
+    model.addNewTicketLink(link);
   }
 }
 

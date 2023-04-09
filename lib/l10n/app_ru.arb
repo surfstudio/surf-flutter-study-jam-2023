@@ -18,6 +18,8 @@
       }
     }
   },
-  "addTicketDialog": "Добавление билета",
-  "inputUrlLabel": "Введите url"
+  "addTicketDialogTitle": "Добавление билета",
+  "inputUrlLabel": "Введите url",
+  "emptyUrlValidator": "Вы не ввели ссылку",
+  "incorrectUrlValidator": "Введите корректный URL"
 }
