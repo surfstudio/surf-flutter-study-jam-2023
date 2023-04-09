@@ -15,11 +15,16 @@ class AddTicketButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () => showModalBottomSheet(
+        isScrollControlled: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.p24),
         ),
         context: context,
-        builder: (context) => const UrlInputFormWidget(),
+        builder: (context) => SingleChildScrollView(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: const UrlInputFormWidget(),
+        ),
       ),
       label: Text(
         AppLocalizations.of(context)!.add,

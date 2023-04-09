@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:surf_flutter_study_jam_2023/core/constants/app_colors.dart';
 import 'package:surf_flutter_study_jam_2023/core/constants/app_sizes.dart';
+import 'package:surf_flutter_study_jam_2023/features/cubit/download_pdf_cubit.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/widgets/url_field_widget.dart';
 
 /// Форма с полем ввода и кнопкой добаления билета в приложение
@@ -34,16 +36,24 @@ class _UrlInputFormWidgetState extends State<UrlInputFormWidget> {
             Container(
               width: AppSizes.p40,
               height: AppSizes.p4,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.grey,
-                borderRadius: BorderRadius.circular(AppSizes.p12),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(AppSizes.p12),
+                  topRight: Radius.circular(AppSizes.p12),
+                ),
               ),
             ),
             AppSizes.gapH40,
             UrlFieldWidget(controller: _urlController),
             AppSizes.gapH40,
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                context
+                    .read<DownloadPdfCubit>()
+                    .downloadPdf(_urlController.text);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.royalPurple,
                 padding: AppSizes.edgeSymmetricV16H32,

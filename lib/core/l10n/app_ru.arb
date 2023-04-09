@@ -6,5 +6,8 @@
     "enterTheCorrectUrl": "Введите корректный url",
     "waitingForTheDownloadToStart": "Ожидает начала загрузки",
     "fileUploaded": "Файл загружен",
-    "ticket": "Билет"
+    "ticket": "Билет",
+    "loading": "Загружается",
+    "from": "из",
+    "fileDownloaded": "Файл загружен"
 }

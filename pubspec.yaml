@@ -14,15 +14,38 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+  intl: 0.17.0
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: 1.0.2
+
+  path_provider: 2.0.14
+
+  provider: 6.0.5
+
+  # Storage
+  hive: 2.2.3
+  hive_flutter: 1.1.0
+
+  # Network
+  dio: 5.1.1
+
+  # SM
+  flutter_bloc: 8.1.2
+
+  # Autogen
+  freezed: 2.3.2
+  freezed_annotation: 2.2.0
+  json_serializable: 6.6.1
+  json_annotation: 4.8.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: 2.0.0
+
+  build_runner: 2.3.3
+  hive_generator: 2.0.0
 
 flutter:
   generate: true
