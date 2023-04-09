@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:surf_flutter_study_jam_2023/core/my_app.dart';
+import 'package:surf_flutter_study_jam_2023/my_app.dart';
 
 /// Запуск приложения.
 ///

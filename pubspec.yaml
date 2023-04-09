@@ -12,10 +12,12 @@ dependencies:
   elementary: ^2.0.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_svg: ^2.0.4
   freezed_annotation: ^2.2.0
   golden_toolkit: ^0.15.0
-  intl: ^0.18.0
+  intl: ^0.17.0
   mocktail: ^0.3.0
   provider: ^6.0.5
   spider: ^4.2.0
@@ -32,6 +34,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
 
 
