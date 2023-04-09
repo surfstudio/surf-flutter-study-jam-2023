@@ -1,0 +1,7 @@
+{
+    "ticketStorage": "Хранение билетов",
+    "noAvailableData": "Здесь пока ничего нет",
+    "add": "Добавить",
+    "enterTheUrl": "Введите url",
+    "enterTheCorrectUrl": "Введите корректный url"
+}
