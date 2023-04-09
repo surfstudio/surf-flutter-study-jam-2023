@@ -1,7 +1,4 @@
-import 'dart:typed_data';
 import 'package:hive/hive.dart';
-
-import 'package:surf_flutter_study_jam_2023/features/ticket_storage/domain/entities/ticket.dart';
 
 import '../data/models/ticket_dto.dart';
 import '../data/services/tickets_storage_service_abstract.dart';
@@ -26,6 +23,7 @@ class TicketsStorageService implements TicketsStorageServiceAbstract {
   Future<bool> saveTickets({required List<TicketDto> tickets}) async {
     try {
       final box = await _ticketsBox;
+      box.clear();
       box.addAll(tickets);
       return true;
     } catch (_) {

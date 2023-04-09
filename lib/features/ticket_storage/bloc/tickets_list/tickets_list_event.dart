@@ -7,5 +7,12 @@ class TicketsListEvent with _$TicketsListEvent {
   const factory TicketsListEvent.addTicket({
     required String url,
     required Function() onSuccess,
+    required Function(String msg) onError,
   }) = TicketsListAddTicketEvent;
+  const factory TicketsListEvent.downloadTickets({
+    required List<String> keys,
+  }) = DownloadTicketsEvent;
+  const factory TicketsListEvent.pauseDownloadForTicket({
+    required String key,
+  }) = PauseDownloadForTicketEvent;
 }

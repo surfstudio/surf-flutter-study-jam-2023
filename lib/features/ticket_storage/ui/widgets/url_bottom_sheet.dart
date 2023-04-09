@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/bloc/tickets_list/tickets_list_bloc.dart';
-import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ui/style_themes.dart';
+import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ui/theme/style_themes.dart';
 import 'package:validators/validators.dart';
 
 class UrlBottomSheet extends StatefulWidget {
@@ -63,6 +63,14 @@ class _UrlBottomSheetState extends State<UrlBottomSheet> {
                         );
                         Navigator.pop(context);
                       },
+                      onError: (msg) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(msg),
+                            duration: const Duration(milliseconds: 2500),
+                          ),
+                        );
+                      },
                     ),
                   );
                   controller.clear();
@@ -70,7 +78,7 @@ class _UrlBottomSheetState extends State<UrlBottomSheet> {
               },
               child: const Text(
                 'Добавить',
-                style: StyleThemes.commonTextStyle,
+                style: StyleThemes.commonDarkStyle,
               ),
             ),
           ],

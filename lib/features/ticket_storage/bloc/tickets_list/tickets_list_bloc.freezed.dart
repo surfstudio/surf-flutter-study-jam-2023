@@ -19,20 +19,31 @@ mixin _$TicketsListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
-    required TResult Function(String url, dynamic Function() onSuccess)
+    required TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)
         addTicket,
+    required TResult Function(List<String> keys) downloadTickets,
+    required TResult Function(String key) pauseDownloadForTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
-    TResult? Function(String url, dynamic Function() onSuccess)? addTicket,
+    TResult? Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult? Function(List<String> keys)? downloadTickets,
+    TResult? Function(String key)? pauseDownloadForTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function(String url, dynamic Function() onSuccess)? addTicket,
+    TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult Function(List<String> keys)? downloadTickets,
+    TResult Function(String key)? pauseDownloadForTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +51,26 @@ mixin _$TicketsListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(TicketsListLoadEvent value) load,
     required TResult Function(TicketsListAddTicketEvent value) addTicket,
+    required TResult Function(DownloadTicketsEvent value) downloadTickets,
+    required TResult Function(PauseDownloadForTicketEvent value)
+        pauseDownloadForTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TicketsListLoadEvent value)? load,
     TResult? Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult? Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult? Function(PauseDownloadForTicketEvent value)?
+        pauseDownloadForTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TicketsListLoadEvent value)? load,
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,8 +133,11 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
-    required TResult Function(String url, dynamic Function() onSuccess)
+    required TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)
         addTicket,
+    required TResult Function(List<String> keys) downloadTickets,
+    required TResult Function(String key) pauseDownloadForTicket,
   }) {
     return load();
   }
@@ -124,7 +146,11 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
-    TResult? Function(String url, dynamic Function() onSuccess)? addTicket,
+    TResult? Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult? Function(List<String> keys)? downloadTickets,
+    TResult? Function(String key)? pauseDownloadForTicket,
   }) {
     return load?.call();
   }
@@ -133,7 +159,11 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function(String url, dynamic Function() onSuccess)? addTicket,
+    TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult Function(List<String> keys)? downloadTickets,
+    TResult Function(String key)? pauseDownloadForTicket,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -147,6 +177,9 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(TicketsListLoadEvent value) load,
     required TResult Function(TicketsListAddTicketEvent value) addTicket,
+    required TResult Function(DownloadTicketsEvent value) downloadTickets,
+    required TResult Function(PauseDownloadForTicketEvent value)
+        pauseDownloadForTicket,
   }) {
     return load(this);
   }
@@ -156,6 +189,9 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TicketsListLoadEvent value)? load,
     TResult? Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult? Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult? Function(PauseDownloadForTicketEvent value)?
+        pauseDownloadForTicket,
   }) {
     return load?.call(this);
   }
@@ -165,6 +201,8 @@ class _$TicketsListLoadEvent extends TicketsListLoadEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TicketsListLoadEvent value)? load,
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -186,7 +224,10 @@ abstract class _$$TicketsListAddTicketEventCopyWith<$Res> {
           $Res Function(_$TicketsListAddTicketEvent) then) =
       __$$TicketsListAddTicketEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({String url, dynamic Function() onSuccess});
+  $Res call(
+      {String url,
+      dynamic Function() onSuccess,
+      dynamic Function(String) onError});
 }
 
 /// @nodoc
@@ -202,6 +243,7 @@ class __$$TicketsListAddTicketEventCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
     Object? onSuccess = null,
+    Object? onError = null,
   }) {
     return _then(_$TicketsListAddTicketEvent(
       url: null == url
@@ -212,6 +254,10 @@ class __$$TicketsListAddTicketEventCopyWithImpl<$Res>
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as dynamic Function(),
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
     ));
   }
 }
@@ -220,17 +266,19 @@ class __$$TicketsListAddTicketEventCopyWithImpl<$Res>
 
 class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
   const _$TicketsListAddTicketEvent(
-      {required this.url, required this.onSuccess})
+      {required this.url, required this.onSuccess, required this.onError})
       : super._();
 
   @override
   final String url;
   @override
   final dynamic Function() onSuccess;
+  @override
+  final dynamic Function(String) onError;
 
   @override
   String toString() {
-    return 'TicketsListEvent.addTicket(url: $url, onSuccess: $onSuccess)';
+    return 'TicketsListEvent.addTicket(url: $url, onSuccess: $onSuccess, onError: $onError)';
   }
 
   @override
@@ -240,11 +288,12 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
             other is _$TicketsListAddTicketEvent &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.onSuccess, onSuccess) ||
-                other.onSuccess == onSuccess));
+                other.onSuccess == onSuccess) &&
+            (identical(other.onError, onError) || other.onError == onError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, url, onSuccess);
+  int get hashCode => Object.hash(runtimeType, url, onSuccess, onError);
 
   @JsonKey(ignore: true)
   @override
@@ -257,30 +306,41 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
-    required TResult Function(String url, dynamic Function() onSuccess)
+    required TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)
         addTicket,
+    required TResult Function(List<String> keys) downloadTickets,
+    required TResult Function(String key) pauseDownloadForTicket,
   }) {
-    return addTicket(url, onSuccess);
+    return addTicket(url, onSuccess, onError);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
-    TResult? Function(String url, dynamic Function() onSuccess)? addTicket,
+    TResult? Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult? Function(List<String> keys)? downloadTickets,
+    TResult? Function(String key)? pauseDownloadForTicket,
   }) {
-    return addTicket?.call(url, onSuccess);
+    return addTicket?.call(url, onSuccess, onError);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function(String url, dynamic Function() onSuccess)? addTicket,
+    TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult Function(List<String> keys)? downloadTickets,
+    TResult Function(String key)? pauseDownloadForTicket,
     required TResult orElse(),
   }) {
     if (addTicket != null) {
-      return addTicket(url, onSuccess);
+      return addTicket(url, onSuccess, onError);
     }
     return orElse();
   }
@@ -290,6 +350,9 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(TicketsListLoadEvent value) load,
     required TResult Function(TicketsListAddTicketEvent value) addTicket,
+    required TResult Function(DownloadTicketsEvent value) downloadTickets,
+    required TResult Function(PauseDownloadForTicketEvent value)
+        pauseDownloadForTicket,
   }) {
     return addTicket(this);
   }
@@ -299,6 +362,9 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TicketsListLoadEvent value)? load,
     TResult? Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult? Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult? Function(PauseDownloadForTicketEvent value)?
+        pauseDownloadForTicket,
   }) {
     return addTicket?.call(this);
   }
@@ -308,6 +374,8 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TicketsListLoadEvent value)? load,
     TResult Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
     required TResult orElse(),
   }) {
     if (addTicket != null) {
@@ -320,14 +388,338 @@ class _$TicketsListAddTicketEvent extends TicketsListAddTicketEvent {
 abstract class TicketsListAddTicketEvent extends TicketsListEvent {
   const factory TicketsListAddTicketEvent(
           {required final String url,
-          required final dynamic Function() onSuccess}) =
+          required final dynamic Function() onSuccess,
+          required final dynamic Function(String) onError}) =
       _$TicketsListAddTicketEvent;
   const TicketsListAddTicketEvent._() : super._();
 
   String get url;
   dynamic Function() get onSuccess;
+  dynamic Function(String) get onError;
   @JsonKey(ignore: true)
   _$$TicketsListAddTicketEventCopyWith<_$TicketsListAddTicketEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DownloadTicketsEventCopyWith<$Res> {
+  factory _$$DownloadTicketsEventCopyWith(_$DownloadTicketsEvent value,
+          $Res Function(_$DownloadTicketsEvent) then) =
+      __$$DownloadTicketsEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> keys});
+}
+
+/// @nodoc
+class __$$DownloadTicketsEventCopyWithImpl<$Res>
+    extends _$TicketsListEventCopyWithImpl<$Res, _$DownloadTicketsEvent>
+    implements _$$DownloadTicketsEventCopyWith<$Res> {
+  __$$DownloadTicketsEventCopyWithImpl(_$DownloadTicketsEvent _value,
+      $Res Function(_$DownloadTicketsEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? keys = null,
+  }) {
+    return _then(_$DownloadTicketsEvent(
+      keys: null == keys
+          ? _value._keys
+          : keys // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DownloadTicketsEvent extends DownloadTicketsEvent {
+  const _$DownloadTicketsEvent({required final List<String> keys})
+      : _keys = keys,
+        super._();
+
+  final List<String> _keys;
+  @override
+  List<String> get keys {
+    if (_keys is EqualUnmodifiableListView) return _keys;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_keys);
+  }
+
+  @override
+  String toString() {
+    return 'TicketsListEvent.downloadTickets(keys: $keys)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DownloadTicketsEvent &&
+            const DeepCollectionEquality().equals(other._keys, _keys));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_keys));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DownloadTicketsEventCopyWith<_$DownloadTicketsEvent> get copyWith =>
+      __$$DownloadTicketsEventCopyWithImpl<_$DownloadTicketsEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)
+        addTicket,
+    required TResult Function(List<String> keys) downloadTickets,
+    required TResult Function(String key) pauseDownloadForTicket,
+  }) {
+    return downloadTickets(keys);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult? Function(List<String> keys)? downloadTickets,
+    TResult? Function(String key)? pauseDownloadForTicket,
+  }) {
+    return downloadTickets?.call(keys);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult Function(List<String> keys)? downloadTickets,
+    TResult Function(String key)? pauseDownloadForTicket,
+    required TResult orElse(),
+  }) {
+    if (downloadTickets != null) {
+      return downloadTickets(keys);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TicketsListLoadEvent value) load,
+    required TResult Function(TicketsListAddTicketEvent value) addTicket,
+    required TResult Function(DownloadTicketsEvent value) downloadTickets,
+    required TResult Function(PauseDownloadForTicketEvent value)
+        pauseDownloadForTicket,
+  }) {
+    return downloadTickets(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TicketsListLoadEvent value)? load,
+    TResult? Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult? Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult? Function(PauseDownloadForTicketEvent value)?
+        pauseDownloadForTicket,
+  }) {
+    return downloadTickets?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TicketsListLoadEvent value)? load,
+    TResult Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    required TResult orElse(),
+  }) {
+    if (downloadTickets != null) {
+      return downloadTickets(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DownloadTicketsEvent extends TicketsListEvent {
+  const factory DownloadTicketsEvent({required final List<String> keys}) =
+      _$DownloadTicketsEvent;
+  const DownloadTicketsEvent._() : super._();
+
+  List<String> get keys;
+  @JsonKey(ignore: true)
+  _$$DownloadTicketsEventCopyWith<_$DownloadTicketsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PauseDownloadForTicketEventCopyWith<$Res> {
+  factory _$$PauseDownloadForTicketEventCopyWith(
+          _$PauseDownloadForTicketEvent value,
+          $Res Function(_$PauseDownloadForTicketEvent) then) =
+      __$$PauseDownloadForTicketEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String key});
+}
+
+/// @nodoc
+class __$$PauseDownloadForTicketEventCopyWithImpl<$Res>
+    extends _$TicketsListEventCopyWithImpl<$Res, _$PauseDownloadForTicketEvent>
+    implements _$$PauseDownloadForTicketEventCopyWith<$Res> {
+  __$$PauseDownloadForTicketEventCopyWithImpl(
+      _$PauseDownloadForTicketEvent _value,
+      $Res Function(_$PauseDownloadForTicketEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+  }) {
+    return _then(_$PauseDownloadForTicketEvent(
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PauseDownloadForTicketEvent extends PauseDownloadForTicketEvent {
+  const _$PauseDownloadForTicketEvent({required this.key}) : super._();
+
+  @override
+  final String key;
+
+  @override
+  String toString() {
+    return 'TicketsListEvent.pauseDownloadForTicket(key: $key)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PauseDownloadForTicketEvent &&
+            (identical(other.key, key) || other.key == key));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, key);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PauseDownloadForTicketEventCopyWith<_$PauseDownloadForTicketEvent>
+      get copyWith => __$$PauseDownloadForTicketEventCopyWithImpl<
+          _$PauseDownloadForTicketEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)
+        addTicket,
+    required TResult Function(List<String> keys) downloadTickets,
+    required TResult Function(String key) pauseDownloadForTicket,
+  }) {
+    return pauseDownloadForTicket(key);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult? Function(List<String> keys)? downloadTickets,
+    TResult? Function(String key)? pauseDownloadForTicket,
+  }) {
+    return pauseDownloadForTicket?.call(key);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String url, dynamic Function() onSuccess,
+            dynamic Function(String) onError)?
+        addTicket,
+    TResult Function(List<String> keys)? downloadTickets,
+    TResult Function(String key)? pauseDownloadForTicket,
+    required TResult orElse(),
+  }) {
+    if (pauseDownloadForTicket != null) {
+      return pauseDownloadForTicket(key);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TicketsListLoadEvent value) load,
+    required TResult Function(TicketsListAddTicketEvent value) addTicket,
+    required TResult Function(DownloadTicketsEvent value) downloadTickets,
+    required TResult Function(PauseDownloadForTicketEvent value)
+        pauseDownloadForTicket,
+  }) {
+    return pauseDownloadForTicket(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TicketsListLoadEvent value)? load,
+    TResult? Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult? Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult? Function(PauseDownloadForTicketEvent value)?
+        pauseDownloadForTicket,
+  }) {
+    return pauseDownloadForTicket?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TicketsListLoadEvent value)? load,
+    TResult Function(TicketsListAddTicketEvent value)? addTicket,
+    TResult Function(DownloadTicketsEvent value)? downloadTickets,
+    TResult Function(PauseDownloadForTicketEvent value)? pauseDownloadForTicket,
+    required TResult orElse(),
+  }) {
+    if (pauseDownloadForTicket != null) {
+      return pauseDownloadForTicket(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PauseDownloadForTicketEvent extends TicketsListEvent {
+  const factory PauseDownloadForTicketEvent({required final String key}) =
+      _$PauseDownloadForTicketEvent;
+  const PauseDownloadForTicketEvent._() : super._();
+
+  String get key;
+  @JsonKey(ignore: true)
+  _$$PauseDownloadForTicketEventCopyWith<_$PauseDownloadForTicketEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -336,21 +728,21 @@ mixin _$TicketsListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function(List<Ticket> tickets, String randomKey) loaded,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) =>
@@ -436,7 +828,7 @@ class _$TicketsListInitState extends TicketsListInitState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function(List<Ticket> tickets, String randomKey) loaded,
     required TResult Function() loading,
   }) {
     return init();
@@ -446,7 +838,7 @@ class _$TicketsListInitState extends TicketsListInitState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult? Function()? loading,
   }) {
     return init?.call();
@@ -456,7 +848,7 @@ class _$TicketsListInitState extends TicketsListInitState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -512,7 +904,7 @@ abstract class _$$TicketsListLoadedStateCopyWith<$Res> {
           $Res Function(_$TicketsListLoadedState) then) =
       __$$TicketsListLoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Ticket> tickets});
+  $Res call({List<Ticket> tickets, String randomKey});
 }
 
 /// @nodoc
@@ -527,12 +919,17 @@ class __$$TicketsListLoadedStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tickets = null,
+    Object? randomKey = null,
   }) {
     return _then(_$TicketsListLoadedState(
       tickets: null == tickets
           ? _value._tickets
           : tickets // ignore: cast_nullable_to_non_nullable
               as List<Ticket>,
+      randomKey: null == randomKey
+          ? _value.randomKey
+          : randomKey // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -540,7 +937,8 @@ class __$$TicketsListLoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TicketsListLoadedState extends TicketsListLoadedState {
-  const _$TicketsListLoadedState({required final List<Ticket> tickets})
+  const _$TicketsListLoadedState(
+      {required final List<Ticket> tickets, required this.randomKey})
       : _tickets = tickets,
         super._();
 
@@ -552,9 +950,13 @@ class _$TicketsListLoadedState extends TicketsListLoadedState {
     return EqualUnmodifiableListView(_tickets);
   }
 
+// Костыль для апдейта состояния
+  @override
+  final String randomKey;
+
   @override
   String toString() {
-    return 'TicketsListState.loaded(tickets: $tickets)';
+    return 'TicketsListState.loaded(tickets: $tickets, randomKey: $randomKey)';
   }
 
   @override
@@ -562,12 +964,14 @@ class _$TicketsListLoadedState extends TicketsListLoadedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TicketsListLoadedState &&
-            const DeepCollectionEquality().equals(other._tickets, _tickets));
+            const DeepCollectionEquality().equals(other._tickets, _tickets) &&
+            (identical(other.randomKey, randomKey) ||
+                other.randomKey == randomKey));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tickets));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_tickets), randomKey);
 
   @JsonKey(ignore: true)
   @override
@@ -580,32 +984,32 @@ class _$TicketsListLoadedState extends TicketsListLoadedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function(List<Ticket> tickets, String randomKey) loaded,
     required TResult Function() loading,
   }) {
-    return loaded(tickets);
+    return loaded(tickets, randomKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult? Function()? loading,
   }) {
-    return loaded?.call(tickets);
+    return loaded?.call(tickets, randomKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(tickets);
+      return loaded(tickets, randomKey);
     }
     return orElse();
   }
@@ -646,11 +1050,13 @@ class _$TicketsListLoadedState extends TicketsListLoadedState {
 }
 
 abstract class TicketsListLoadedState extends TicketsListState {
-  const factory TicketsListLoadedState({required final List<Ticket> tickets}) =
-      _$TicketsListLoadedState;
+  const factory TicketsListLoadedState(
+      {required final List<Ticket> tickets,
+      required final String randomKey}) = _$TicketsListLoadedState;
   const TicketsListLoadedState._() : super._();
 
-  List<Ticket> get tickets;
+  List<Ticket> get tickets; // Костыль для апдейта состояния
+  String get randomKey;
   @JsonKey(ignore: true)
   _$$TicketsListLoadedStateCopyWith<_$TicketsListLoadedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -696,7 +1102,7 @@ class _$TicketsListLoadingState extends TicketsListLoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Ticket> tickets) loaded,
+    required TResult Function(List<Ticket> tickets, String randomKey) loaded,
     required TResult Function() loading,
   }) {
     return loading();
@@ -706,7 +1112,7 @@ class _$TicketsListLoadingState extends TicketsListLoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Ticket> tickets)? loaded,
+    TResult? Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult? Function()? loading,
   }) {
     return loading?.call();
@@ -716,7 +1122,7 @@ class _$TicketsListLoadingState extends TicketsListLoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Ticket> tickets)? loaded,
+    TResult Function(List<Ticket> tickets, String randomKey)? loaded,
     TResult Function()? loading,
     required TResult orElse(),
   }) {

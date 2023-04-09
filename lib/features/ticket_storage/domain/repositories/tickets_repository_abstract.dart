@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'package:dio/dio.dart';
 
 import '../entities/ticket.dart';
 
@@ -7,7 +7,9 @@ abstract class TicketsRepositoryAbstract {
 
   Future<List<Ticket>> loadTicketsList();
 
-  Future<bool> downloadDocuments({required List<String> urls});
-
-  Future<Uint8List> loadDocument();
+  Future<bool> downloadDocument({
+    required String url,
+    void Function(int, int)? onReceiveProgress,
+    required CancelToken cancelToken,
+  });
 }
