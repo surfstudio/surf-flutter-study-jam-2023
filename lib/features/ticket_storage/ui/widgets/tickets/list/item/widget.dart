@@ -31,7 +31,7 @@ class TicketListItemWidget extends StatelessWidget {
           loadingFile: (_, __) => const Icon(
             Icons.pause_circle_outline,
           ),
-          pause: (_) => const Icon(
+          paused: (_) => const Icon(
             Icons.pause_circle_outline,
           ),
           fileLoaded: (filePath) => const Icon(

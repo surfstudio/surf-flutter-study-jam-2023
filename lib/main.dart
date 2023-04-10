@@ -9,6 +9,7 @@ import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ui/screen/ti
 import 'package:surf_flutter_study_jam_2023/features/ticket_storage/ui/screen/ticket_storage_screen_model.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   final database = AppDb();
   final dio = Dio();
   final ticketsRepository = TicketsRepository(

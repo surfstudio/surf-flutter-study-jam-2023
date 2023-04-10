@@ -45,6 +45,7 @@ class TicketModelPersistenceModelConverter {
         readyToLoadFile: (_) => 'readyToLoadFile',
         loadingFile: (_, __) => 'loadingFile',
         fileLoaded: (_) => 'fileLoaded',
+        paused: (_) => 'paused',
       ),
       filePath: m.status.maybeWhen(
         fileLoaded: (status) =>

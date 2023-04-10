@@ -11,5 +11,5 @@ class TicketStatus with _$TicketStatus {
   const factory TicketStatus.readyToLoadFile(TicketUrl url) = ReadyToLoadFile;
   const factory TicketStatus.loadingFile(int currentSize, int totalSize) = Loading;
   const factory TicketStatus.fileLoaded(TicketFilePath file) = FileLoaded;
-  const factory TicketStatus.pause(CancelToken token) = Pause;
+  const factory TicketStatus.paused(CancelToken token) = Pause;
 }

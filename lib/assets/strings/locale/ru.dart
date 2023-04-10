@@ -21,6 +21,7 @@ class _TicketStorageStrings {
       loadingFile: (current, total) =>
           'Загружается ${_formatBytes(current, 1)} из ${_formatBytes(total, 1)}',
       fileLoaded: (_) => 'Файл загружен',
+      paused: (_) => 'Приостановлено',
     );
   }
 }
