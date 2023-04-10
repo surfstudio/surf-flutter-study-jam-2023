@@ -58,4 +58,4 @@ Simulator (Iphone 14 Pro Max)
 
 Демонстрация работы загружена на [Yandex.disk](https://disk.yandex.ru/i/qfYpICYp8tJRlA)
 и продублирована
-[в ассетах этого репозитория](assets%2Fsurf_flutter_jam_2023.mov).
+[в ассетах этого репозитория](screencast%2Fsurf_flutter_jam_2023.mov).
