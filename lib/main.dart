@@ -1,5 +1,3 @@
-// TODO(zemcov): установи FVM.
-
 import 'package:surf_flutter_study_jam_2023/runner.dart';
 
 /// Точка входа в приложение.
